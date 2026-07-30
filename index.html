@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="en" class="light scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technofys EdTech | Cinematic Digital Learning Operating System</title>
+  <meta name="description" content="Technofys is an enterprise digital learning partner offering 360° AI-powered LMS, Moodle engineering, course production, video localization, and analytics." />
+
+  <!-- Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS Engine -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'Inter', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
+          },
+          colors: {
+            ivory: '#F8F7F4',
+            emerald: {
+              700: '#0F766E',
+              800: '#0D655E'
+            },
+            violet: {
+              600: '#7C3AED'
+            },
+            gold: {
+              600: '#B7791F'
+            },
+            charcoal: '#111827'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="bg-[#F8F7F4] text-slate-700 antialiased overflow-x-hidden selection:bg-[#0F766E] selection:text-white">
+
+  <!-- React Bits WebGL FluidGlass Optical Refraction Lens Cursor Overlay -->
+  <canvas id="fluid-glass-canvas" class="fixed inset-0 z-[60] pointer-events-none w-screen h-screen"></canvas>
+
+  <!-- Frame Preloader -->
+  <div id="loader" class="fixed inset-0 z-[100] bg-[#F8F7F4] flex flex-col items-center justify-center transition-opacity duration-500">
+    <div class="relative flex items-center justify-center mb-6">
+      <div class="w-16 h-16 rounded-full border-2 border-teal-200 border-t-[#0F766E] animate-spin"></div>
+      <div class="absolute inset-0 flex items-center justify-center font-display font-bold text-lg text-[#111827]">T</div>
+    </div>
+    <div class="font-mono text-[11px] tracking-widest uppercase text-slate-500 mb-2">Unveiling Digital Learning Campus</div>
+    <div id="loader-bar-bg" class="w-48 h-1 bg-slate-200 rounded-full overflow-hidden">
+      <div id="loader-bar" class="h-full bg-[#0F766E] w-0 transition-all duration-150"></div>
+    </div>
+    <div id="loader-text" class="font-mono text-[10px] text-slate-400 mt-2">0%</div>
+  </div>
+
+  <!-- Floating Dark Glass Navbar -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-5 transition-all duration-300">
+    <div id="navbar-inner" class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3.5 rounded-2xl transition-all duration-300 bg-[#111827]/85 backdrop-blur-xl border border-white/10 shadow-xl text-white">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-[#0F766E] p-[1px] shadow-sm group-hover:scale-105 transition-transform flex items-center justify-center">
+          <span class="font-display font-bold text-white text-lg">T</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-lg tracking-tight text-white group-hover:text-teal-400 transition-colors">Technofys</span>
+          <span class="text-[9px] uppercase tracking-widest text-slate-400 font-mono">EdTech Systems</span>
+        </div>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-teal-400 transition-colors py-1">Campus</a>
+        <a href="#services" class="hover:text-teal-400 transition-colors py-1">Ecosystem</a>
+        <a href="#industries" class="hover:text-teal-400 transition-colors py-1">Journey</a>
+        <a href="#transformation" class="hover:text-teal-400 transition-colors py-1">Morph</a>
+        <a href="#pipeline" class="hover:text-teal-400 transition-colors py-1">Pipeline</a>
+        <a href="#portfolio" class="hover:text-teal-400 transition-colors py-1">Exhibition</a>
+        <a href="#testimonials" class="hover:text-teal-400 transition-colors py-1">Endorsements</a>
+      </nav>
+
+      <!-- Right CTA -->
+      <a href="mailto:admin@technofys.com" class="emerald-primary-btn relative group px-5 py-2.5 rounded-xl font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-sm overflow-hidden flex items-center gap-2">
+        <span class="relative z-10">Request Consultation</span>
+        <i data-lucide="arrow-right" class="w-3.5 h-3.5 relative z-10 group-hover:translate-x-1 transition-transform"></i>
+      </a>
+
+    </div>
+  </header>
+
+  <main id="smooth-wrapper">
+    <div id="smooth-content">
+
+      <!-- ================= SCENE 0: HERO SECTION (100% UNTOUCHED CINEMATIC ENGINE) ================= -->
+      <section id="hero-section" class="relative w-full h-[200vh]">
+        
+        <!-- Pinned Fullscreen Canvas Container -->
+        <div id="hero-canvas-container" class="sticky top-0 left-0 w-full h-screen overflow-hidden gpu-accelerated">
+          
+          <!-- Frame Rendering Canvas -->
+          <canvas id="hero-canvas" class="absolute inset-0 w-full h-full object-cover z-0 gpu-accelerated"></canvas>
+
+          <!-- Interaction Hint: Scroll Indicator -->
+          <div id="scroll-indicator" class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none transition-opacity duration-300">
+            <span class="font-mono text-[10px] uppercase tracking-widest text-slate-600 font-medium">Scroll to Enter Campus</span>
+            <div class="w-5 h-9 rounded-full border border-slate-400 flex items-start justify-center p-1 backdrop-blur-sm bg-white/40">
+              <div class="w-1 h-2 rounded-full bg-[#0F766E] animate-bounce"></div>
+            </div>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500 animate-pulse"></i>
+          </div>
+
+          <!-- Hero Content Overlay Phase 2 (Pure Floating Typography) -->
+          <div id="hero-phase2" class="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-6 max-w-5xl mx-auto opacity-0 pointer-events-none gpu-accelerated">
+            
+            <div class="hero-mask-wrap overflow-hidden mb-4">
+              <h1 id="hero-brand-heading" class="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight text-[#111827] leading-tight drop-shadow-[0_4px_12px_rgba(255,255,255,0.9)]">
+                Technofys EdTech
+              </h1>
+            </div>
+
+            <div class="hero-tagline-wrap overflow-hidden">
+              <p id="hero-brand-tagline" class="text-[#0F766E] text-xl sm:text-3xl font-semibold tracking-wide drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)]">
+                Building the Future of Digital Learning
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= SCENE 1: ABOUT (FULL-BLEED ARCHITECTURAL CAMPUS DISCOVERY) ================= -->
+      <section id="about" class="relative pt-24 pb-12 sm:pt-28 sm:pb-16 px-6 bg-[#F8F7F4] overflow-hidden z-20 flex items-center">
+        
+        <div class="max-w-7xl mx-auto w-full relative z-10">
+          
+          <!-- Large Overlapping Editorial Campus Stage -->
+          <div class="relative w-full rounded-3xl overflow-hidden bg-gradient-to-tr from-[#111827] via-slate-900 to-teal-950 p-8 sm:p-14 text-white shadow-2xl min-h-[580px] flex flex-col justify-between">
+            
+            <!-- Background Environment Grid Texture -->
+            <div class="absolute inset-0 bg-[radial-gradient(#0F766E_1px,transparent_1px)] [background-size:24px_24px] opacity-15 pointer-events-none"></div>
+
+            <!-- Top Status Bar -->
+            <div class="relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 border-b border-white/10 pb-6 mb-8">
+              <div class="flex items-center gap-3">
+                <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="font-mono text-xs uppercase tracking-widest text-teal-300 font-semibold">Campus Node 01 • Innovation Architecture</span>
+              </div>
+              <div class="text-xs font-mono text-slate-400">Technofys Global Digital Core</div>
+            </div>
+
+            <!-- 2-Column Balanced Editorial Layout Grid -->
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center my-6">
+              
+              <!-- Left Column: Headline & Narrative -->
+              <div class="lg:col-span-7 space-y-6">
+                <h2 class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight">
+                  Enter the Future of <span class="text-teal-400">Enterprise Digital Learning</span>
+                </h2>
+                <p class="text-slate-300 text-base sm:text-xl font-light leading-relaxed max-w-2xl">
+                  Technofys is an enterprise digital learning partner offering 360° AI-powered LMS, Moodle engineering, course production, video localization, and assessment telemetry.
+                </p>
+              </div>
+
+              <!-- Right Column: Glass Feature Status Card -->
+              <div class="lg:col-span-5 bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md space-y-5">
+                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                  <span class="text-xs font-mono text-teal-300 uppercase tracking-widest font-semibold">Platform Telemetry</span>
+                  <span class="px-2.5 py-0.5 bg-teal-500/20 text-teal-300 rounded-full text-[10px] font-mono">Live SLA 99.9%</span>
+                </div>
+                
+                <div class="space-y-3 text-xs text-slate-300">
+                  <div class="flex items-center justify-between py-1 border-b border-white/5">
+                    <span class="text-slate-400">LMS Engine</span>
+                    <span class="font-mono font-medium text-white">Moodle 4.x Enterprise</span>
+                  </div>
+                  <div class="flex items-center justify-between py-1 border-b border-white/5">
+                    <span class="text-slate-400">Content Standard</span>
+                    <span class="font-mono font-medium text-white">SCORM 1.2 / 2004 & xAPI</span>
+                  </div>
+                  <div class="flex items-center justify-between py-1 border-b border-white/5">
+                    <span class="text-slate-400">AI Localization</span>
+                    <span class="font-mono font-medium text-white">6 Global Languages</span>
+                  </div>
+                  <div class="flex items-center justify-between py-1">
+                    <span class="text-slate-400">Security Standard</span>
+                    <span class="font-mono font-medium text-white">SAML SSO & HIPAA Ready</span>
+                  </div>
+                </div>
+
+                <div class="pt-2">
+                  <a href="mailto:admin@technofys.com" class="text-xs font-mono font-bold text-teal-400 flex items-center gap-1.5 uppercase tracking-wider group">
+                    <span>Inspect Campus Core</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Environment Floating Metrics (Zero Boxes/Cards) -->
+            <div class="relative z-10 grid grid-cols-1 sm:grid-cols-3 gap-8 pt-8 border-t border-white/10 mt-8">
+              <div class="space-y-1">
+                <div class="font-display text-4xl sm:text-5xl font-extrabold text-[#B7791F] font-mono">
+                  <span class="counter-num" data-target="500">0</span>+
+                </div>
+                <div class="text-xs font-mono uppercase tracking-widest text-slate-300">SCORM & H5P Solutions</div>
+              </div>
+
+              <div class="space-y-1">
+                <div class="font-display text-4xl sm:text-5xl font-extrabold text-[#B7791F] font-mono">
+                  <span class="counter-num" data-target="50">0</span>+
+                </div>
+                <div class="text-xs font-mono uppercase tracking-widest text-slate-300">Enterprise Partnerships</div>
+              </div>
+
+              <div class="space-y-1">
+                <div class="font-display text-4xl sm:text-5xl font-extrabold text-[#B7791F] font-mono">
+                  <span class="counter-num" data-target="50000">0</span>+
+                </div>
+                <div class="text-xs font-mono uppercase tracking-widest text-slate-300">Active Global Seats</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= SCENE 2: RE-DESIGNED ARCHITECTURAL DIGITAL ECOSYSTEM ================= -->
+      <section id="services" class="relative eco-blueprint-bg pt-24 pb-12 sm:pt-28 sm:pb-16 px-6 lg:px-12 overflow-hidden z-20 flex flex-col justify-between">
+        
+        <!-- Background Architectural Blueprint Overlays & Coordinates -->
+        <div class="absolute inset-0 pointer-events-none z-0">
+          <!-- Subtle Radial Lighting Diffusion -->
+          <div class="absolute top-1/2 left-2/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#0F766E]/5 rounded-full blur-3xl"></div>
+          
+          <!-- Blueprint Coordinate Labels & Scale Ticks -->
+          <div class="absolute top-8 left-8 font-mono text-[10px] text-slate-400 tracking-widest uppercase">
+            [ SYS.ECO // 2026.04 ] • PLATFORM INTEGRATION MATRIX
+          </div>
+          <div class="absolute top-8 right-8 font-mono text-[10px] text-slate-400 tracking-widest uppercase">
+            ELEVATION: +120m • ISOMETRIC PERSPECTIVE 2.5D
+          </div>
+          <div class="absolute bottom-8 left-8 font-mono text-[10px] text-slate-400 tracking-widest uppercase">
+            BUS: HIGH-THROUGHPUT xAPI / LTI 1.3
+          </div>
+          <div class="absolute bottom-8 right-8 font-mono text-[10px] text-slate-400 tracking-widest uppercase">
+            SLA: 99.9% UPTIME GUARANTEED
+          </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full relative z-10 my-auto">
+          
+          <!-- Asymmetrical 2-Column Editorial & Architectural Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            <!-- LEFT COLUMN: Editorial Narrative & Floating Telemetry HUD (lg:col-span-5) -->
+            <div class="lg:col-span-5 space-y-6">
+              
+              <!-- Section Header Badge -->
+              <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0F766E]/10 border border-[#0F766E]/20 text-[#0F766E] text-xs font-mono font-semibold uppercase tracking-wider">
+                <span class="w-2 h-2 rounded-full bg-[#0F766E] animate-pulse"></span>
+                <span>Enterprise Ecosystem Blueprint</span>
+              </div>
+
+              <!-- Main Editorial Title -->
+              <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#111827] tracking-tight leading-[1.08]">
+                One Connected <br/><span class="text-[#0F766E]">Learning Platform</span>
+              </h2>
+
+              <p class="text-slate-600 text-base sm:text-lg font-light leading-relaxed">
+                Technofys connects custom Moodle LMS engineering, AI course synthesis, pedagogy design, H5P interactive engines, and cloud telemetry into a unified, high-performance enterprise ecosystem.
+              </p>
+
+              <!-- FLOATING INTERACTIVE TELEMETRY HUD PANEL -->
+              <div id="eco-hud-card" class="eco-glass-plate p-6 sm:p-7 space-y-4 shadow-xl border border-slate-200/90 relative overflow-hidden transition-all duration-300">
+                <div class="flex items-center justify-between border-b border-slate-200/80 pb-3">
+                  <span id="eco-hud-badge" class="px-2.5 py-0.5 rounded-full bg-[#0F766E]/15 text-[#0F766E] text-[10px] font-mono font-bold uppercase tracking-wider">
+                    CENTRAL ENGINE
+                  </span>
+                  <span id="eco-hud-metric" class="text-xs font-mono font-bold text-[#B7791F]">
+                    360° Learning OS
+                  </span>
+                </div>
+
+                <div class="space-y-2">
+                  <h3 id="eco-hud-title" class="font-display text-xl font-bold text-[#111827]">
+                    Technofys Core Engine
+                  </h3>
+                  <p id="eco-hud-desc" class="text-slate-600 text-xs leading-relaxed font-normal">
+                    Central architectural hub governing real-time xAPI event streams, SSO authentication, tenant routing, and high-concurrency database queries.
+                  </p>
+                </div>
+
+                <!-- Technical Specs Grid -->
+                <div class="pt-3 border-t border-slate-200/80 grid grid-cols-2 gap-3 text-[11px]">
+                  <div>
+                    <span class="text-slate-400 block text-[10px] font-mono uppercase">Interoperability</span>
+                    <span id="eco-hud-spec1" class="font-mono font-semibold text-slate-800">SCORM 1.2 / xAPI</span>
+                  </div>
+                  <div>
+                    <span class="text-slate-400 block text-[10px] font-mono uppercase">Concurrency</span>
+                    <span id="eco-hud-spec2" class="font-mono font-semibold text-slate-800">50,000+ Active Seats</span>
+                  </div>
+                </div>
+
+                <div class="pt-2 flex items-center justify-between">
+                  <span id="eco-hud-tag" class="text-[10px] font-mono text-slate-400 uppercase">SYS.CORE // MASTER</span>
+                  <a href="mailto:admin@technofys.com" class="text-xs font-bold text-[#0F766E] flex items-center gap-1 font-mono uppercase tracking-wider hover:translate-x-1 transition-transform">
+                    <span>Inspect Module</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Realistic Isometric Architectural Ecosystem (lg:col-span-7) -->
+            <div class="lg:col-span-7 relative w-full h-[560px] sm:h-[600px] flex items-center justify-center">
+              
+              <!-- SVG Isometric Connection Network & Blueprint Canvas -->
+              <svg id="eco-network-svg" class="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible" viewBox="0 0 700 600" preserveAspectRatio="xMidYMid meet">
+                <!-- Outer Blueprint Alignment Grid Lines -->
+                <line x1="50" y1="100" x2="650" y2="500" stroke="#CBD5E1" stroke-dasharray="2 4" stroke-width="1" opacity="0.6"/>
+                <line x1="650" y1="100" x2="50" y2="500" stroke="#CBD5E1" stroke-dasharray="2 4" stroke-width="1" opacity="0.6"/>
+                
+                <!-- Central Connection Hub Rings (Functional Alignment) -->
+                <circle cx="350" cy="300" r="160" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" fill="none"/>
+                <circle cx="350" cy="300" r="260" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="2 6" fill="none" opacity="0.5"/>
+
+                <!-- Traveling Light Pulse Connection Lines from Central Core (350, 300) to Nodes -->
+                <!-- Path 1: Moodle Enterprise (140, 90) -->
+                <path id="path-node-1" d="M 350 300 L 140 90" class="connection-path" />
+                <!-- Path 2: AI Studio (580, 160) -->
+                <path id="path-node-2" d="M 350 300 L 580 160" class="connection-path" />
+                <!-- Path 3: Instructional Design (90, 290) -->
+                <path id="path-node-3" d="M 350 300 L 90 290" class="connection-path" />
+                <!-- Path 4: H5P Interactive (610, 340) -->
+                <path id="path-node-4" d="M 350 300 L 610 340" class="connection-path" />
+                <!-- Path 5: Cloud Infrastructure (140, 500) -->
+                <path id="path-node-5" d="M 350 300 L 140 500" class="connection-path" />
+                <!-- Path 6: Analytics Telemetry (560, 500) -->
+                <path id="path-node-6" d="M 350 300 L 560 500" class="connection-path" />
+                <!-- Path 7: Corporate Academies (350, 40) -->
+                <path id="path-node-7" d="M 350 300 L 350 40" class="connection-path" />
+              </svg>
+
+              <!-- ISOMETRIC FLOATING GLASS PLATES (Positioned absolutely over SVG viewport coordinates) -->
+              <div class="relative w-full h-full max-w-[700px] max-h-[600px]">
+                
+                <!-- CENTER NODE: TECHNOFYS CORE ENGINE -->
+                <div data-node="0" class="eco-node-trigger absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-30 eco-glass-plate-core eco-glass-plate-core-active p-5 sm:p-6 w-[220px] cursor-pointer text-white animate-float-slow" style="animation-delay: 0s;">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono text-[9px] uppercase tracking-wider font-bold">CORE HUB</span>
+                    <span class="w-2 h-2 rounded-full bg-teal-400 animate-ping"></span>
+                  </div>
+                  <div class="font-display font-extrabold text-base text-white">Technofys Core</div>
+                  <div class="text-[11px] text-teal-200/90 font-mono mt-0.5">360° Learning OS</div>
+                </div>
+
+                <!-- CAPABILITY 1: Moodle Enterprise (Top-Left) -->
+                <div data-node="1" class="eco-node-trigger absolute top-[8%] left-[0%] sm:left-[2%] z-20 eco-glass-plate p-4 w-[160px] sm:w-[185px] cursor-pointer animate-float-slow" style="animation-delay: 0.5s;">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[9px] font-mono text-[#0F766E] font-bold uppercase">01 • LMS</span>
+                    <i data-lucide="layers" class="w-4 h-4 text-[#0F766E]"></i>
+                  </div>
+                  <div class="font-display font-bold text-xs sm:text-sm text-[#111827]">Moodle Enterprise</div>
+                  <div class="text-[10px] text-slate-500 font-mono mt-0.5">50,000+ Seats</div>
+                </div>
+
+                <!-- CAPABILITY 2: AI Studio & Voice (Top-Right Staggered Lower) -->
+                <div data-node="2" class="eco-node-trigger absolute top-[24%] right-[0%] sm:right-[2%] z-20 eco-glass-plate p-4 w-[160px] sm:w-[185px] cursor-pointer animate-float-slow" style="animation-delay: 1s;">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[9px] font-mono text-[#0F766E] font-bold uppercase">02 • AI LAB</span>
+                    <i data-lucide="sparkles" class="w-4 h-4 text-[#0F766E]"></i>
+                  </div>
+                  <div class="font-display font-bold text-xs sm:text-sm text-[#111827]">AI Studio & Voice</div>
+                  <div class="text-[10px] text-slate-500 font-mono mt-0.5">6 Languages</div>
+                </div>
+
+                <!-- CAPABILITY 3: Instructional Design (Mid-Left) -->
+                <div data-node="3" class="eco-node-trigger absolute top-[48%] left-[-2%] sm:left-[0%] -translate-y-1/2 z-20 eco-glass-plate p-4 w-[155px] sm:w-[180px] cursor-pointer animate-float-slow" style="animation-delay: 1.5s;">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[9px] font-mono text-[#0F766E] font-bold uppercase">03 • PEDAGOGY</span>
+                    <i data-lucide="book-open" class="w-4 h-4 text-[#0F766E]"></i>
+                  </div>
+                  <div class="font-display font-bold text-xs sm:text-sm text-[#111827]">Instructional Design</div>
+                  <div class="text-[10px] text-slate-500 font-mono mt-0.5">SME Curricula</div>
+                </div>
+
+                <!-- CAPABILITY 4: H5P Interactive (Mid-Right Staggered Lower) -->
+                <div data-node="4" class="eco-node-trigger absolute top-[58%] right-[-2%] sm:right-[0%] -translate-y-1/2 z-20 eco-glass-plate p-4 w-[155px] sm:w-[180px] cursor-pointer animate-float-slow" style="animation-delay: 2s;">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[9px] font-mono text-[#0F766E] font-bold uppercase">04 • INTERACTIVE</span>
+                    <i data-lucide="gamepad-2" class="w-4 h-4 text-[#0F766E]"></i>
+                  </div>
+                  <div class="font-display font-bold text-xs sm:text-sm text-[#111827]">H5P Widgets</div>
+                  <div class="text-[10px] text-slate-500 font-mono mt-0.5">Native xAPI</div>
+                </div>
+
+                <!-- CAPABILITY 5: Cloud Infrastructure (Bottom-Left) -->
+                <div data-node="5" class="eco-node-trigger absolute bottom-[2%] left-[2%] sm:left-[4%] z-20 eco-glass-plate p-4 w-[160px] sm:w-[185px] cursor-pointer animate-float-slow" style="animation-delay: 2.5s;">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[9px] font-mono text-[#0F766E] font-bold uppercase">05 • CLOUD</span>
+                    <i data-lucide="server" class="w-4 h-4 text-[#0F766E]"></i>
+                  </div>
+                  <div class="font-display font-bold text-xs sm:text-sm text-[#111827]">Managed Cloud</div>
+                  <div class="text-[10px] text-slate-500 font-mono mt-0.5">99.9% Uptime</div>
+                </div>
+
+                <!-- CAPABILITY 6: Real-Time Telemetry (Bottom-Right) -->
+                <div data-node="6" class="eco-node-trigger absolute bottom-[2%] right-[2%] sm:right-[4%] z-20 eco-glass-plate p-4 w-[160px] sm:w-[185px] cursor-pointer animate-float-slow" style="animation-delay: 3s;">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[9px] font-mono text-[#0F766E] font-bold uppercase">06 • TELEMETRY</span>
+                    <i data-lucide="line-chart" class="w-4 h-4 text-[#0F766E]"></i>
+                  </div>
+                  <div class="font-display font-bold text-xs sm:text-sm text-[#111827]">xAPI Analytics</div>
+                  <div class="text-[10px] text-slate-500 font-mono mt-0.5">Real-Time Radar</div>
+                </div>
+
+                <!-- CAPABILITY 7: Corporate Academies (Top-Center High Apex) -->
+                <div data-node="7" class="eco-node-trigger absolute top-[-2%] left-[50%] -translate-x-1/2 z-20 eco-glass-plate p-3.5 sm:p-4 w-[165px] sm:w-[190px] cursor-pointer animate-float-slow" style="animation-delay: 3.5s;">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[9px] font-mono text-[#0F766E] font-bold uppercase">07 • ACADEMIES</span>
+                    <i data-lucide="building-2" class="w-4 h-4 text-[#0F766E]"></i>
+                  </div>
+                  <div class="font-display font-bold text-xs sm:text-sm text-[#111827]">Corporate Academies</div>
+                  <div class="text-[10px] text-slate-500 font-mono mt-0.5">Multi-Tenant</div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Bottom Node Selector Navigation Bar -->
+          <div class="mt-12 pt-6 border-t border-slate-200/80 flex items-center justify-center">
+            <div class="flex items-center gap-2 overflow-x-auto py-1 px-2 max-w-full">
+              <button class="eco-pill eco-pill-active px-3 py-1 rounded-full border border-slate-200 text-slate-600 text-xs font-mono font-medium shrink-0" data-node="0">Core Hub</button>
+              <button class="eco-pill px-3 py-1 rounded-full border border-slate-200 text-slate-600 text-xs font-mono font-medium shrink-0" data-node="1">01 Moodle</button>
+              <button class="eco-pill px-3 py-1 rounded-full border border-slate-200 text-slate-600 text-xs font-mono font-medium shrink-0" data-node="2">02 AI Studio</button>
+              <button class="eco-pill px-3 py-1 rounded-full border border-slate-200 text-slate-600 text-xs font-mono font-medium shrink-0" data-node="3">03 ID Studio</button>
+              <button class="eco-pill px-3 py-1 rounded-full border border-slate-200 text-slate-600 text-xs font-mono font-medium shrink-0" data-node="4">04 H5P</button>
+              <button class="eco-pill px-3 py-1 rounded-full border border-slate-200 text-slate-600 text-xs font-mono font-medium shrink-0" data-node="5">05 Cloud</button>
+              <button class="eco-pill px-3 py-1 rounded-full border border-slate-200 text-slate-600 text-xs font-mono font-medium shrink-0" data-node="6">06 Telemetry</button>
+              <button class="eco-pill px-3 py-1 rounded-full border border-slate-200 text-slate-600 text-xs font-mono font-medium shrink-0" data-node="7">07 Academies</button>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ================= SCENE 3: INDUSTRIES (ARCHITECTURAL SHOWCASE CAMPUS PANELS) ================= -->
+      <section id="industries" class="relative bg-white overflow-hidden z-20">
+        
+        <div id="horizontal-wrapper" class="min-h-screen sticky top-0 flex flex-col justify-center pt-24 pb-12 sm:pt-28 sm:pb-16 overflow-hidden">
+          
+          <div class="max-w-7xl mx-auto px-6 w-full mb-6 shrink-0 flex items-center justify-between">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-[#0F766E] font-semibold">Architectural Showcase Panels</span>
+              <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-[#111827] mt-1">6 Enterprise Campuses</h2>
+            </div>
+            <div class="hidden sm:flex items-center gap-2 text-xs font-mono text-slate-500">
+              <span>Scroll Horizontally Through Architectural Showcases</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 text-[#0F766E]"></i>
+            </div>
+          </div>
+
+          <div id="horizontal-track" class="flex gap-10 px-6 sm:px-16 w-max items-center gpu-accelerated py-4">
+            
+            <!-- BESPOKE PANEL 01: Higher Education (Full-Bleed University Campus - Deep Emerald #0F766E) -->
+            <div class="panel bespoke-panel bespoke-panel-active w-[85vw] sm:w-[60vw] md:w-[48vw] lg:w-[42vw] max-w-[640px] h-[460px] p-8 sm:p-10 flex flex-col justify-between shrink-0">
+              <div class="campus-accent-line"></div>
+              
+              <!-- Full-Bleed Architectural Campus Backdrop -->
+              <div class="absolute inset-0 bg-gradient-to-br from-[#111827] via-slate-900 to-teal-950 z-0"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/80 to-transparent z-10"></div>
+              
+              <!-- 180px Low-Opacity Background Number -->
+              <div class="bg-number-180 absolute top-2 right-4 z-10">01</div>
+
+              <!-- Top Bar -->
+              <div class="relative z-20 flex items-center justify-between">
+                <span class="px-3 py-1 bg-teal-500/15 border border-teal-400/30 text-teal-300 rounded-full text-[10px] font-mono uppercase tracking-widest">
+                  Campus Node • Higher Ed
+                </span>
+                <span class="text-xs font-mono text-teal-400 font-bold">50,000+ Active Seats</span>
+              </div>
+
+              <!-- Editorial Headline & Narrative -->
+              <div class="relative z-20 space-y-3 my-auto">
+                <h3 class="font-display text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+                  Higher Education & Universities
+                </h3>
+                <p class="text-slate-300 text-xs sm:text-sm font-light leading-relaxed max-w-[460px]">
+                  High-concurrency Moodle clusters, campus SIS integrations, automated exam grading telemetry, and blended learning suites.
+                </p>
+
+                <!-- Floating Glass Capability Chips -->
+                <div class="pt-3 flex flex-wrap gap-2">
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-teal-300">Moodle Cluster</span>
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-teal-300">SIS Sync</span>
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-teal-300">50K Seats</span>
+                </div>
+              </div>
+
+              <!-- Footer CTA -->
+              <div class="relative z-20 pt-4 border-t border-white/10 flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-mono">Academic Campus Architecture</span>
+                <a href="mailto:admin@technofys.com" class="text-xs font-bold text-teal-400 flex items-center gap-1.5 font-mono uppercase tracking-wider group">
+                  <span>Explore Campus</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- BESPOKE PANEL 02: Healthcare & Public Health (Asymmetrical Glass Telemetry - Royal Violet #7C3AED) -->
+            <div class="panel bespoke-panel bespoke-panel-inactive w-[85vw] sm:w-[60vw] md:w-[48vw] lg:w-[42vw] max-w-[640px] h-[460px] p-8 sm:p-10 flex flex-col justify-between shrink-0">
+              
+              <div class="absolute inset-0 bg-gradient-to-br from-[#111827] via-slate-900 to-violet-950 z-0"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/80 to-transparent z-10"></div>
+              
+              <!-- 180px Low-Opacity Background Number -->
+              <div class="bg-number-180 absolute top-2 right-4 z-10">02</div>
+
+              <!-- Top Bar -->
+              <div class="relative z-20 flex items-center justify-between">
+                <span class="px-3 py-1 bg-violet-500/15 border border-violet-400/30 text-violet-300 rounded-full text-[10px] font-mono uppercase tracking-widest">
+                  Campus Node • Healthcare
+                </span>
+                <span class="text-xs font-mono text-violet-300 font-bold">HIPAA Compliant</span>
+              </div>
+
+              <!-- Asymmetrical Content Layout -->
+              <div class="relative z-20 space-y-3 my-auto">
+                <h3 class="font-display text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+                  Healthcare & Public Health
+                </h3>
+                <p class="text-slate-300 text-xs sm:text-sm font-light leading-relaxed max-w-[460px]">
+                  HIPAA-compliant continuing medical education, clinical procedure video assessment, and remote field worker certification.
+                </p>
+
+                <!-- Floating Glass Capability Chips -->
+                <div class="pt-3 flex flex-wrap gap-2">
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-violet-300">HIPAA Ready</span>
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-violet-300">Clinical Eval</span>
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-violet-300">Field Certs</span>
+                </div>
+              </div>
+
+              <!-- Footer CTA -->
+              <div class="relative z-20 pt-4 border-t border-white/10 flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-mono">ISO & Medical Certification</span>
+                <a href="mailto:admin@technofys.com" class="text-xs font-bold text-violet-300 flex items-center gap-1.5 font-mono uppercase tracking-wider group">
+                  <span>Explore Healthcare</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- BESPOKE PANEL 03: Corporate Academies (Horizontal Executive Split - Amber Gold #B7791F) -->
+            <div class="panel bespoke-panel bespoke-panel-inactive w-[85vw] sm:w-[60vw] md:w-[48vw] lg:w-[42vw] max-w-[640px] h-[460px] p-8 sm:p-10 flex flex-col justify-between shrink-0">
+              
+              <div class="absolute inset-0 bg-gradient-to-br from-[#111827] via-slate-900 to-amber-950 z-0"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/80 to-transparent z-10"></div>
+              
+              <!-- 180px Low-Opacity Background Number -->
+              <div class="bg-number-180 absolute top-2 right-4 z-10">03</div>
+
+              <!-- Top Bar -->
+              <div class="relative z-20 flex items-center justify-between">
+                <span class="px-3 py-1 bg-amber-500/15 border border-amber-400/30 text-amber-300 rounded-full text-[10px] font-mono uppercase tracking-widest">
+                  Campus Node • Corporate
+                </span>
+                <span class="text-xs font-mono text-amber-300 font-bold">Multi-Tenant Academy</span>
+              </div>
+
+              <!-- Editorial Narrative -->
+              <div class="relative z-20 space-y-3 my-auto">
+                <h3 class="font-display text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+                  Corporate Learning Hubs
+                </h3>
+                <p class="text-slate-300 text-xs sm:text-sm font-light leading-relaxed max-w-[460px]">
+                  Employee onboarding pipelines, compliance tracking, multi-tenant portal branding, SAML SSO, and automated skill badges.
+                </p>
+
+                <!-- Floating Glass Capability Chips -->
+                <div class="pt-3 flex flex-wrap gap-2">
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-amber-300">SAML SSO</span>
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-amber-300">Compliance</span>
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-amber-300">Multi-Tenant</span>
+                </div>
+              </div>
+
+              <!-- Footer CTA -->
+              <div class="relative z-20 pt-4 border-t border-white/10 flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-mono">Enterprise Portal Architecture</span>
+                <a href="mailto:admin@technofys.com" class="text-xs font-bold text-amber-300 flex items-center gap-1.5 font-mono uppercase tracking-wider group">
+                  <span>Explore Corporate</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- BESPOKE PANEL 04: Government & Public Sector (Minimal Blueprint Grid - Electric Blue #2563EB) -->
+            <div class="panel bespoke-panel bespoke-panel-inactive w-[85vw] sm:w-[60vw] md:w-[48vw] lg:w-[42vw] max-w-[640px] h-[460px] p-8 sm:p-10 flex flex-col justify-between shrink-0">
+              
+              <div class="absolute inset-0 bg-gradient-to-br from-[#111827] via-slate-900 to-blue-950 z-0"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/80 to-transparent z-10"></div>
+              
+              <!-- 180px Low-Opacity Background Number -->
+              <div class="bg-number-180 absolute top-2 right-4 z-10">04</div>
+
+              <!-- Top Bar -->
+              <div class="relative z-20 flex items-center justify-between">
+                <span class="px-3 py-1 bg-blue-500/15 border border-blue-400/30 text-blue-300 rounded-full text-[10px] font-mono uppercase tracking-widest">
+                  Campus Node • Public Sector
+                </span>
+                <span class="text-xs font-mono text-blue-300 font-bold">Public Sector Grid</span>
+              </div>
+
+              <!-- Editorial Narrative -->
+              <div class="relative z-20 space-y-3 my-auto">
+                <h3 class="font-display text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+                  Government & Public Sector
+                </h3>
+                <p class="text-slate-300 text-xs sm:text-sm font-light leading-relaxed max-w-[460px]">
+                  Low-bandwidth offline course access for distributed public service programs, national initiatives, and agency training.
+                </p>
+
+                <!-- Floating Glass Capability Chips -->
+                <div class="pt-3 flex flex-wrap gap-2">
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-blue-300">Low-Bandwidth</span>
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-blue-300">Public Grid</span>
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-blue-300">Offline Access</span>
+                </div>
+              </div>
+
+              <!-- Footer CTA -->
+              <div class="relative z-20 pt-4 border-t border-white/10 flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-mono">Distributed Agency Infrastructure</span>
+                <a href="mailto:admin@technofys.com" class="text-xs font-bold text-blue-300 flex items-center gap-1.5 font-mono uppercase tracking-wider group">
+                  <span>Explore Public Sector</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- BESPOKE PANEL 05: NGOs & Humanitarian Missions (Centered Radial Glow - Rose Copper #E11D48) -->
+            <div class="panel bespoke-panel bespoke-panel-inactive w-[85vw] sm:w-[60vw] md:w-[48vw] lg:w-[42vw] max-w-[640px] h-[460px] p-8 sm:p-10 flex flex-col justify-between shrink-0">
+              
+              <div class="absolute inset-0 bg-gradient-to-br from-[#111827] via-slate-900 to-rose-950 z-0"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/80 to-transparent z-10"></div>
+              
+              <!-- 180px Low-Opacity Background Number -->
+              <div class="bg-number-180 absolute top-2 right-4 z-10">05</div>
+
+              <!-- Top Bar -->
+              <div class="relative z-20 flex items-center justify-between">
+                <span class="px-3 py-1 bg-rose-500/15 border border-rose-400/30 text-rose-300 rounded-full text-[10px] font-mono uppercase tracking-widest">
+                  Campus Node • Global Missions
+                </span>
+                <span class="text-xs font-mono text-rose-300 font-bold">Global Impact Engine</span>
+              </div>
+
+              <!-- Editorial Narrative -->
+              <div class="relative z-20 space-y-3 my-auto">
+                <h3 class="font-display text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+                  NGOs & Global Missions
+                </h3>
+                <p class="text-slate-300 text-xs sm:text-sm font-light leading-relaxed max-w-[460px]">
+                  Lightweight educational platforms deployed for humanitarian missions, remote field worker training, and literacy programs.
+                </p>
+
+                <!-- Floating Glass Capability Chips -->
+                <div class="pt-3 flex flex-wrap gap-2">
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-rose-300">Audio Synth</span>
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-rose-300">Field Mobile</span>
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-rose-300">Humanitarian</span>
+                </div>
+              </div>
+
+              <!-- Footer CTA -->
+              <div class="relative z-20 pt-4 border-t border-white/10 flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-mono">Multi-Language Audio Delivery</span>
+                <a href="mailto:admin@technofys.com" class="text-xs font-bold text-rose-300 flex items-center gap-1.5 font-mono uppercase tracking-wider group">
+                  <span>Explore NGOs</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- BESPOKE PANEL 06: Professional Certification (Diagonal Illuminated Split - Teal Cyan #0D9488) -->
+            <div class="panel bespoke-panel bespoke-panel-inactive w-[85vw] sm:w-[60vw] md:w-[48vw] lg:w-[42vw] max-w-[640px] h-[460px] p-8 sm:p-10 flex flex-col justify-between shrink-0">
+              
+              <div class="absolute inset-0 bg-gradient-to-br from-[#111827] via-slate-900 to-emerald-950 z-0"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/80 to-transparent z-10"></div>
+              
+              <!-- 180px Low-Opacity Background Number -->
+              <div class="bg-number-180 absolute top-2 right-4 z-10">06</div>
+
+              <!-- Top Bar -->
+              <div class="relative z-20 flex items-center justify-between">
+                <span class="px-3 py-1 bg-teal-500/15 border border-teal-400/30 text-teal-300 rounded-full text-[10px] font-mono uppercase tracking-widest">
+                  Campus Node • CEU Academies
+                </span>
+                <span class="text-xs font-mono text-teal-300 font-bold">CEU Certification Hub</span>
+              </div>
+
+              <!-- Editorial Narrative -->
+              <div class="relative z-20 space-y-3 my-auto">
+                <h3 class="font-display text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+                  Professional Certification Academies
+                </h3>
+                <p class="text-slate-300 text-xs sm:text-sm font-light leading-relaxed max-w-[460px]">
+                  Monetized digital academies, global payment gateway integrations, automated certificate generation, and CEU tracking.
+                </p>
+
+                <!-- Floating Glass Capability Chips -->
+                <div class="pt-3 flex flex-wrap gap-2">
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-teal-300">CEU Badges</span>
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-teal-300">Payment Gateway</span>
+                  <span class="capability-chip px-3 py-1 rounded-full text-xs font-mono text-teal-300">Global CEU</span>
+                </div>
+              </div>
+
+              <!-- Footer CTA -->
+              <div class="relative z-20 pt-4 border-t border-white/10 flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-mono">Automated CEU Badge Issuing</span>
+                <a href="mailto:admin@technofys.com" class="text-xs font-bold text-teal-300 flex items-center gap-1.5 font-mono uppercase tracking-wider group">
+                  <span>Explore Certification</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ================= SCENE 4: WHY TECHNOFYS (MORPHING VISUAL TRANSFORMATION TIMELINE) ================= -->
+      <section id="transformation" class="relative pt-24 pb-12 sm:pt-28 sm:pb-16 px-6 bg-[#F8F7F4] overflow-hidden z-20">
+        <div class="max-w-7xl mx-auto">
+          
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-[#0F766E] font-semibold">Morphing Transformation</span>
+              <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-[#111827] mt-2">
+                System Interface Morph
+              </h2>
+            </div>
+            <p class="text-slate-600 text-sm sm:text-base max-w-md">
+              Watch fragmented institutional interfaces physically morph on scroll into one unified Deep Emerald platform.
+            </p>
+          </div>
+
+          <!-- Morphing Transformation Path Container -->
+          <div id="morph-container" class="relative w-full rounded-3xl bg-white border border-slate-200 p-8 sm:p-12 shadow-xl min-h-[500px] flex flex-col justify-between">
+            
+            <div class="flex items-center justify-between border-b border-slate-200 pb-6 mb-8">
+              <div class="flex items-center gap-3">
+                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                <span class="text-xs font-mono uppercase tracking-widest text-slate-500">Fragmented Bottlenecks → Deep Emerald Unified Platform</span>
+              </div>
+              <span class="text-xs font-mono text-[#0F766E] font-semibold">Live System Physics</span>
+            </div>
+
+            <!-- Fragmented UI Components Physically Merging -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-4">
+              
+              <div class="fragment-item p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+                <div class="text-xs font-mono text-red-500 uppercase font-bold mb-2">Fragment 01 • Broken Dashboard</div>
+                <h4 class="font-display font-bold text-[#111827] text-base mb-1">Clunky LMS Interface</h4>
+                <p class="text-xs text-slate-500">Complex navigation causing student drop-off.</p>
+              </div>
+
+              <div class="fragment-item p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+                <div class="text-xs font-mono text-amber-500 uppercase font-bold mb-2">Fragment 02 • Manual Overhead</div>
+                <h4 class="font-display font-bold text-[#111827] text-base mb-1">High Faculty Workload</h4>
+                <p class="text-xs text-slate-500">Professors struggling with formatting & exports.</p>
+              </div>
+
+              <div class="fragment-item p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+                <div class="text-xs font-mono text-violet-500 uppercase font-bold mb-2">Fragment 03 • Server Instability</div>
+                <h4 class="font-display font-bold text-[#111827] text-base mb-1">Peak Exam Outages</h4>
+                <p class="text-xs text-slate-500">Unoptimized servers stalling midterms & finals.</p>
+              </div>
+
+            </div>
+
+            <!-- Unified Deep Emerald Solution Output -->
+            <div class="morph-target mt-8 p-6 rounded-2xl bg-gradient-to-r from-teal-900 to-[#111827] text-white border border-[#0F766E]/40 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-lg">
+              <div class="space-y-1">
+                <div class="text-xs font-mono uppercase text-teal-300">Unified Platform Output</div>
+                <div class="font-display font-bold text-xl text-white">Technofys Deep Emerald 360° Architecture</div>
+                <p class="text-xs text-slate-300">Custom branded Moodle UX + End-to-end SME production + 99.9% load-tested cloud clusters.</p>
+              </div>
+              <a href="mailto:admin@technofys.com" class="emerald-primary-btn px-6 py-3 rounded-full text-xs uppercase tracking-wider font-semibold shrink-0">
+                Explore Platform
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= SCENE 5: RE-DESIGNED COMPACT EDITORIAL PIPELINE (70-80VH MAX) ================= -->
+      <section id="pipeline" class="relative eco-blueprint-bg min-h-[85vh] pt-24 pb-10 sm:pt-28 sm:pb-12 px-6 lg:px-12 overflow-hidden z-20 flex flex-col justify-between sticky top-0">
+        
+        <!-- Architectural Blueprint Guideline Background Grid Overlays -->
+        <div class="absolute inset-0 pointer-events-none z-0">
+          <div class="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#0F766E]/5 rounded-full blur-3xl"></div>
+          <div class="absolute top-6 left-8 font-mono text-[10px] text-slate-400 tracking-widest uppercase">
+            [ PIPELINE // CONTINUOUS FACTORY ] • 6-STAGE WORKFLOW ENGINE
+          </div>
+          <div class="absolute top-6 right-8 font-mono text-[10px] text-slate-400 tracking-widest uppercase">
+            COMPACT EDITORIAL PRODUCT SHOWCASE • 75VH TARGET
+          </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full relative z-10 my-auto">
+          
+          <!-- Asymmetrical Split Editorial Layout (Left 35% / Right 65%) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- LEFT COLUMN (35% width / lg:col-span-4): Typography & Stage Copy -->
+            <div class="lg:col-span-4 space-y-5">
+              
+              <!-- Section Label -->
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0F766E]/10 border border-[#0F766E]/20 text-[#0F766E] text-xs font-mono font-semibold uppercase tracking-wider">
+                <span id="pipe-label-tag">STAGE 01 OF 06</span>
+                <span class="text-slate-300">•</span>
+                <span id="pipe-label-sub" class="text-slate-500">Drafting Floor</span>
+              </div>
+
+              <!-- Stage Number & Title -->
+              <div class="space-y-1">
+                <div id="pipe-stage-num" class="font-mono text-5xl lg:text-6xl font-extrabold text-[#0F766E] tracking-tight">
+                  01
+                </div>
+                <h2 id="pipe-stage-title" class="font-display text-3xl lg:text-5xl font-extrabold text-[#111827] tracking-tight leading-[1.1]">
+                  Blueprint Studio
+                </h2>
+              </div>
+
+              <!-- Short Body Narrative (18px) -->
+              <p id="pipe-stage-desc" class="text-slate-600 text-base lg:text-lg font-light leading-relaxed">
+                Drafting environment featuring self-drawing wireframe overlays, glass planning boards, and curriculum blueprint sketches.
+              </p>
+
+              <!-- Progress Indicator & Milestone Spec -->
+              <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-mono text-slate-400 block uppercase">Milestone Standard</span>
+                  <span id="pipe-stage-metric" class="font-mono font-bold text-xs lg:text-sm text-[#B7791F]">100% SME Curriculum Alignment</span>
+                </div>
+
+                <!-- Navigation Control Arrows -->
+                <div class="flex items-center gap-2">
+                  <button id="pipe-prev-btn" class="w-9 h-9 rounded-full border border-slate-200 bg-white hover:bg-slate-100 flex items-center justify-center transition-colors shadow-sm">
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-slate-600"></i>
+                  </button>
+                  <button id="pipe-next-btn" class="w-9 h-9 rounded-full border border-slate-200 bg-white hover:bg-slate-100 flex items-center justify-center transition-colors shadow-sm">
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600"></i>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN (65% width / lg:col-span-8): Floating Stage Card (~620px x 420px Visual Stage Environment) -->
+            <div class="lg:col-span-8 flex items-center justify-center">
+              
+              <div id="pipe-stage-card" class="stage-card-float w-full max-w-[640px] min-h-[380px] sm:min-h-[420px] p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
+                
+                <!-- Stage 01 Environment Visual Content -->
+                <div id="stage-visual-0" class="stage-visual-container space-y-5">
+                  <div class="flex items-center justify-between border-b border-slate-200/80 pb-3">
+                    <span class="px-2.5 py-0.5 rounded bg-teal-500/15 text-[#0F766E] font-mono text-[10px] font-bold uppercase">ARCHITECTURAL DRAFTING</span>
+                    <span class="text-xs font-mono text-slate-500">Scale: 1:1 Blueprint</span>
+                  </div>
+                  <!-- Architectural Blueprint Drafting Desk Canvas -->
+                  <div class="relative w-full h-[220px] rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-teal-950 p-6 flex flex-col justify-between text-white overflow-hidden shadow-inner border border-white/10">
+                    <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 500 220" fill="none">
+                      <path d="M 20 20 L 480 20 L 480 200 L 20 200 Z" stroke="#14B8A6" stroke-width="1.5" stroke-dasharray="6 6" />
+                      <circle cx="250" cy="110" r="70" stroke="#14B8A6" stroke-width="1.2" stroke-dasharray="4 4" />
+                      <line x1="20" y1="110" x2="480" y2="110" stroke="#14B8A6" stroke-width="1" />
+                    </svg>
+                    <div class="relative z-10 flex items-center justify-between">
+                      <span class="font-mono text-xs text-teal-300 font-bold uppercase">[SYS.BLUEPRINT // DRAFTING FLOOR]</span>
+                      <span class="px-2 py-0.5 bg-teal-500/20 text-teal-300 rounded text-[10px] font-mono">100% Outcome Mapped</span>
+                    </div>
+                    <div class="relative z-10 space-y-1 my-auto">
+                      <div class="font-display text-xl font-bold text-white">SME Curriculum Wireframe</div>
+                      <p class="text-xs text-slate-300 max-w-md">Pedagogical storyboarding maps learning objectives directly to SCORM units.</p>
+                    </div>
+                    <div class="relative z-10 flex items-center gap-2">
+                      <span class="px-2.5 py-1 rounded bg-white/10 text-xs font-mono text-slate-200">SCORM 1.2</span>
+                      <span class="px-2.5 py-1 rounded bg-white/10 text-xs font-mono text-slate-200">xAPI Event Bus</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stage 02 Environment Visual Content -->
+                <div id="stage-visual-1" class="stage-visual-container space-y-5 hidden">
+                  <div class="flex items-center justify-between border-b border-slate-200/80 pb-3">
+                    <span class="px-2.5 py-0.5 rounded bg-amber-500/15 text-[#B7791F] font-mono text-[10px] font-bold uppercase">STORYBOARD WHITEBOARD</span>
+                    <span class="text-xs font-mono text-slate-500">Bloom's Taxonomy Level 5</span>
+                  </div>
+                  <div class="relative w-full h-[220px] rounded-2xl bg-gradient-to-br from-slate-900 via-amber-950 to-slate-900 p-6 flex flex-col justify-between text-white overflow-hidden shadow-inner border border-amber-500/20">
+                    <div class="relative z-10 flex items-center justify-between">
+                      <span class="font-mono text-xs text-amber-300 font-bold uppercase">[PEDAGOGY // STORYBOARD BOARD]</span>
+                      <span class="px-2 py-0.5 bg-amber-500/20 text-amber-300 rounded text-[10px] font-mono">SCORM & xAPI</span>
+                    </div>
+                    <div class="relative z-10 grid grid-cols-3 gap-3 my-auto">
+                      <div class="p-3 rounded-xl bg-white/10 border border-white/15 backdrop-blur-md">
+                        <span class="text-[10px] font-mono text-amber-300 block">UNIT 01</span>
+                        <div class="font-bold text-xs text-white">Objective Map</div>
+                      </div>
+                      <div class="p-3 rounded-xl bg-white/10 border border-white/15 backdrop-blur-md">
+                        <span class="text-[10px] font-mono text-amber-300 block">UNIT 02</span>
+                        <div class="font-bold text-xs text-white">Interactive Check</div>
+                      </div>
+                      <div class="p-3 rounded-xl bg-white/10 border border-white/15 backdrop-blur-md">
+                        <span class="text-[10px] font-mono text-amber-300 block">UNIT 03</span>
+                        <div class="font-bold text-xs text-white">Final Telemetry</div>
+                      </div>
+                    </div>
+                    <div class="relative z-10 flex items-center gap-2">
+                      <span class="px-2.5 py-1 rounded bg-white/10 text-xs font-mono text-slate-200">Interactive Quiz</span>
+                      <span class="px-2.5 py-1 rounded bg-white/10 text-xs font-mono text-slate-200">Video Script</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stage 03 Environment Visual Content -->
+                <div id="stage-visual-2" class="stage-visual-container space-y-5 hidden">
+                  <div class="flex items-center justify-between border-b border-slate-200/80 pb-3">
+                    <span class="px-2.5 py-0.5 rounded bg-violet-500/15 text-violet-600 font-mono text-[10px] font-bold uppercase">AI VOICE & MEDIA LAB</span>
+                    <span class="text-xs font-mono text-slate-500">6 Global Languages</span>
+                  </div>
+                  <div class="relative w-full h-[220px] rounded-2xl bg-gradient-to-br from-slate-900 via-violet-950 to-slate-950 p-6 flex flex-col justify-between text-white overflow-hidden shadow-inner border border-violet-500/30">
+                    <div class="relative z-10 flex items-center justify-between">
+                      <span class="font-mono text-xs text-violet-300 font-bold uppercase">[AI.LAB // VOICE SYNTHESIS]</span>
+                      <span class="px-2 py-0.5 bg-violet-500/20 text-violet-300 rounded text-[10px] font-mono">Neural Audio Stream</span>
+                    </div>
+                    <div class="relative z-10 flex items-center justify-center gap-2 my-auto">
+                      <div class="w-2 bg-violet-400 rounded-full factory-wave-bar" style="animation-delay: 0.1s"></div>
+                      <div class="w-2 bg-violet-400 rounded-full factory-wave-bar" style="animation-delay: 0.3s"></div>
+                      <div class="w-2 bg-violet-400 rounded-full factory-wave-bar" style="animation-delay: 0.2s"></div>
+                      <div class="w-2 bg-violet-400 rounded-full factory-wave-bar" style="animation-delay: 0.5s"></div>
+                      <div class="w-2 bg-violet-400 rounded-full factory-wave-bar" style="animation-delay: 0.15s"></div>
+                    </div>
+                    <div class="relative z-10 flex items-center justify-between text-xs font-mono text-violet-200">
+                      <span>Audio Track: English / Spanish / German</span>
+                      <span class="font-bold">Subtitles Sync: 100%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stage 04 Environment Visual Content -->
+                <div id="stage-visual-3" class="stage-visual-container space-y-5 hidden">
+                  <div class="flex items-center justify-between border-b border-slate-200/80 pb-3">
+                    <span class="px-2.5 py-0.5 rounded bg-teal-500/15 text-[#0F766E] font-mono text-[10px] font-bold uppercase">DEVELOPMENT RIG & H5P</span>
+                    <span class="text-xs font-mono text-slate-500">LTI 1.3 Compatible</span>
+                  </div>
+                  <div class="relative w-full h-[220px] rounded-2xl bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950 p-5 flex flex-col justify-between text-white overflow-hidden shadow-inner border border-teal-500/30 font-mono">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                      <span class="text-xs text-teal-300 font-bold">[IDE // H5P_WIDGET_COMPILER.TS]</span>
+                      <span class="text-[10px] text-slate-400">STATUS: BUILD SUCCESS</span>
+                    </div>
+                    <div class="space-y-1 text-xs text-slate-300 my-auto">
+                      <div class="text-teal-400">&lt;H5P.InteractiveVideo</div>
+                      <div class="pl-4 text-slate-300">src="course_lecture_01.mp4"</div>
+                      <div class="pl-4 text-amber-300">onCheckPoint={(e) =&gt; emitxAPI(e)}</div>
+                      <div class="text-teal-400">/&gt;</div>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 border-t border-white/10 pt-2">
+                      <span>Moodle 4.x Plugin</span>
+                      <span class="text-teal-300 font-bold">xAPI Bus Active</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stage 05 Environment Visual Content -->
+                <div id="stage-visual-4" class="stage-visual-container space-y-5 hidden">
+                  <div class="flex items-center justify-between border-b border-slate-200/80 pb-3">
+                    <span class="px-2.5 py-0.5 rounded bg-teal-500/15 text-[#0F766E] font-mono text-[10px] font-bold uppercase">CLOUD MATRIX & CLUSTERS</span>
+                    <span class="text-xs font-mono text-slate-500">AWS Kubernetes SLA 99.9%</span>
+                  </div>
+                  <div class="relative w-full h-[220px] rounded-2xl bg-gradient-to-br from-slate-900 via-slate-950 to-teal-950 p-6 flex flex-col justify-between text-white overflow-hidden shadow-inner border border-teal-500/30">
+                    <div class="relative z-10 flex items-center justify-between">
+                      <span class="font-mono text-xs text-teal-300 font-bold uppercase">[CLOUD // KUBERNETES MATRIX]</span>
+                      <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-300 rounded text-[10px] font-mono flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> 99.9% UPTIME
+                      </span>
+                    </div>
+                    <div class="relative z-10 grid grid-cols-2 gap-4 my-auto">
+                      <div class="p-3 rounded-xl bg-white/10 border border-white/10">
+                        <div class="text-[10px] font-mono text-slate-400">SERVER CLUSTER 01</div>
+                        <div class="font-bold text-sm text-white">AWS Auto-Scale Active</div>
+                      </div>
+                      <div class="p-3 rounded-xl bg-white/10 border border-white/10">
+                        <div class="text-[10px] font-mono text-slate-400">DATABASE BUS</div>
+                        <div class="font-bold text-sm text-white">PostgreSQL Failover</div>
+                      </div>
+                    </div>
+                    <div class="relative z-10 flex items-center justify-between text-xs font-mono text-slate-300">
+                      <span>SAML 2.0 / OAuth SSO Active</span>
+                      <span class="text-teal-300 font-bold">24/7 Monitored</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stage 06 Environment Visual Content -->
+                <div id="stage-visual-5" class="stage-visual-container space-y-5 hidden">
+                  <div class="flex items-center justify-between border-b border-slate-200/80 pb-3">
+                    <span class="px-2.5 py-0.5 rounded bg-amber-500/15 text-[#B7791F] font-mono text-[10px] font-bold uppercase">EXECUTIVE TELEMETRY RADAR</span>
+                    <span class="text-xs font-mono text-slate-500">xAPI / LTI Live Stream</span>
+                  </div>
+                  <div class="relative w-full h-[220px] rounded-2xl bg-gradient-to-br from-slate-900 via-amber-950 to-slate-950 p-6 flex flex-col justify-between text-white overflow-hidden shadow-inner border border-amber-500/30">
+                    <div class="relative z-10 flex items-center justify-between">
+                      <span class="font-mono text-xs text-amber-300 font-bold uppercase">[TELEMETRY // COMMAND RADAR]</span>
+                      <span class="px-2 py-0.5 bg-amber-500/20 text-amber-300 rounded text-[10px] font-mono">Live Event Stream</span>
+                    </div>
+                    <div class="relative z-10 grid grid-cols-3 gap-3 my-auto text-center">
+                      <div class="p-3 rounded-xl bg-white/10 border border-white/10">
+                        <div class="text-xl font-bold font-mono text-amber-300">98.4%</div>
+                        <div class="text-[9px] font-mono text-slate-300">Completion Rate</div>
+                      </div>
+                      <div class="p-3 rounded-xl bg-white/10 border border-white/10">
+                        <div class="text-xl font-bold font-mono text-amber-300">0.4s</div>
+                        <div class="text-[9px] font-mono text-slate-300">Latency Bus</div>
+                      </div>
+                      <div class="p-3 rounded-xl bg-white/10 border border-white/10">
+                        <div class="text-xl font-bold font-mono text-amber-300">50K+</div>
+                        <div class="text-[9px] font-mono text-slate-300">Events / Hour</div>
+                      </div>
+                    </div>
+                    <div class="relative z-10 flex items-center justify-between text-xs font-mono text-amber-200">
+                      <span>xAPI Statement Stream Active</span>
+                      <span class="font-bold">BI Report Exported</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Footer Card Action Bar -->
+                <div class="pt-4 border-t border-slate-200/80 flex items-center justify-between relative z-10">
+                  <span id="pipe-card-footer-tag" class="text-xs font-mono text-slate-500">STAGE 01 // ARCHITECTURAL DRAFTING</span>
+                  <a href="mailto:admin@technofys.com" class="text-xs font-bold text-[#0F766E] flex items-center gap-1 font-mono uppercase tracking-wider hover:translate-x-1 transition-transform">
+                    <span>Inspect Pipeline Stage</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                  </a>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Bottom Editorial Timeline Navigation Bar -->
+          <div class="mt-8 pt-4 border-t border-slate-200/80 flex items-center justify-center">
+            <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-1 px-2 max-w-full">
+              <span class="editorial-timeline-item editorial-timeline-item-active text-xs" data-pipe-stage="0">01 Blueprint</span>
+              <span class="timeline-connector-line timeline-connector-line-active w-4 sm:w-8"></span>
+              <span class="editorial-timeline-item text-xs text-slate-500" data-pipe-stage="1">02 Design</span>
+              <span class="timeline-connector-line w-4 sm:w-8"></span>
+              <span class="editorial-timeline-item text-xs text-slate-500" data-pipe-stage="2">03 AI</span>
+              <span class="timeline-connector-line w-4 sm:w-8"></span>
+              <span class="editorial-timeline-item text-xs text-slate-500" data-pipe-stage="3">04 Build</span>
+              <span class="timeline-connector-line w-4 sm:w-8"></span>
+              <span class="editorial-timeline-item text-xs text-slate-500" data-pipe-stage="4">05 Deploy</span>
+              <span class="timeline-connector-line w-4 sm:w-8"></span>
+              <span class="editorial-timeline-item text-xs text-slate-500" data-pipe-stage="5">06 Analytics</span>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ================= SCENE 6: PORTFOLIO (VIRTUAL EXHIBITION GALLERY) ================= -->
+      <section id="portfolio" class="relative pt-24 pb-12 sm:pt-28 sm:pb-16 px-6 bg-[#F8F7F4] overflow-hidden z-20">
+        <div class="max-w-7xl mx-auto">
+          
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-[#0F766E] font-semibold">Virtual Exhibition Space</span>
+              <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-[#111827] mt-2">
+                Illuminated Gallery
+              </h2>
+            </div>
+            <p class="text-slate-600 text-sm sm:text-base max-w-md">
+              Walk between illuminated 3D glass panels featuring cursor reflections and depth zoom.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 perspective-container">
+            
+            <!-- Exhibition Panel 1 -->
+            <div class="portfolio-panel-3d glass-card-3d rounded-3xl overflow-hidden bg-white p-6 cursor-pointer">
+              <div class="h-52 rounded-2xl bg-gradient-to-tr from-[#111827] via-slate-800 to-teal-900 p-6 flex flex-col justify-between mb-6 shadow-md">
+                <span class="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-white text-[10px] font-mono w-max">Public University</span>
+                <div>
+                  <span class="text-xs text-teal-300 font-mono">Moodle 4.2 Architecture</span>
+                  <h3 class="font-display font-bold text-white text-xl">50,000+ Learner Cluster</h3>
+                </div>
+              </div>
+              <h4 class="font-display font-bold text-[#111827] text-lg mb-2">Higher Ed Enterprise Portal</h4>
+              <p class="text-xs text-slate-500 leading-relaxed mb-4">Complete Moodle theme customization, SSO integration, and high-concurrency exam engine.</p>
+              <div class="text-xs font-bold text-[#0F766E] flex items-center gap-1 font-mono uppercase">Step Inside Exhibition <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></div>
+            </div>
+
+            <!-- Exhibition Panel 2 -->
+            <div class="portfolio-panel-3d glass-card-3d rounded-3xl overflow-hidden bg-white p-6 cursor-pointer">
+              <div class="h-52 rounded-2xl bg-gradient-to-tr from-[#111827] via-violet-900 to-purple-950 p-6 flex flex-col justify-between mb-6 shadow-md">
+                <span class="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-white text-[10px] font-mono w-max">Global Business School</span>
+                <div>
+                  <span class="text-xs text-violet-300 font-mono">AI Voiceover & Subtitles</span>
+                  <h3 class="font-display font-bold text-white text-xl">Multilingual Master Courses</h3>
+                </div>
+              </div>
+              <h4 class="font-display font-bold text-[#111827] text-lg mb-2">International eLearning Suite</h4>
+              <p class="text-xs text-slate-500 leading-relaxed mb-4">Automated translation of 5 core curricula into 6 international languages with clear audio.</p>
+              <div class="text-xs font-bold text-[#7C3AED] flex items-center gap-1 font-mono uppercase">Step Inside Exhibition <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></div>
+            </div>
+
+            <!-- Exhibition Panel 3 -->
+            <div class="portfolio-panel-3d glass-card-3d rounded-3xl overflow-hidden bg-white p-6 cursor-pointer">
+              <div class="h-52 rounded-2xl bg-gradient-to-tr from-[#111827] via-amber-900 to-yellow-950 p-6 flex flex-col justify-between mb-6 shadow-md">
+                <span class="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-white text-[10px] font-mono w-max">Healthcare Network</span>
+                <div>
+                  <span class="text-xs text-amber-300 font-mono">HIPAA & SCORM Standard</span>
+                  <h3 class="font-display font-bold text-white text-xl">Clinical Certification Portal</h3>
+                </div>
+              </div>
+              <h4 class="font-display font-bold text-[#111827] text-lg mb-2">Medical CEU Training Hub</h4>
+              <p class="text-xs text-slate-500 leading-relaxed mb-4">Interactive video procedures, automated CEU badge issuing, and compliance reporting.</p>
+              <div class="text-xs font-bold text-[#B7791F] flex items-center gap-1 font-mono uppercase">Step Inside Exhibition <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></div>
+            </div>
+
+            </div>
+
+          </div>
+        </section>
+
+      <!-- ================= SCENE 7: RE-DESIGNED INFINITE TESTIMONIAL CONVEYOR ================= -->
+      <section id="testimonials" class="relative eco-blueprint-bg pt-24 pb-12 sm:pt-28 sm:pb-16 px-0 overflow-hidden z-20">
+        
+        <!-- Subtle Radial Background Lighting Diffusion -->
+        <div class="absolute inset-0 pointer-events-none z-0">
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-[#0F766E]/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 mb-12 relative z-10 space-y-8 text-center">
+          
+          <!-- Top Section Header -->
+          <div class="max-w-3xl mx-auto space-y-3">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0F766E]/10 border border-[#0F766E]/20 text-[#0F766E] text-xs font-mono font-semibold uppercase tracking-wider">
+              <span class="w-2 h-2 rounded-full bg-[#0F766E] animate-pulse"></span>
+              <span>Institutional Endorsements</span>
+            </div>
+            <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-[#111827] tracking-tight leading-tight">
+              Trusted by Institutions Worldwide
+            </h2>
+            <p class="text-slate-600 text-base sm:text-lg font-light leading-relaxed">
+              Real educators. Real deployments. Real outcomes.
+            </p>
+          </div>
+
+          <!-- Animated Trust Metrics Strip -->
+          <div class="max-w-4xl mx-auto bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-slate-200/80 shadow-sm">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-slate-200/80">
+              
+              <div class="space-y-1 pt-2 md:pt-0">
+                <div class="font-display text-3xl sm:text-4xl font-extrabold text-[#0F766E] font-mono">50,000+</div>
+                <div class="text-xs font-mono text-slate-500 uppercase tracking-wider font-semibold">Active Learners</div>
+              </div>
+
+              <div class="space-y-1 pt-2 md:pt-0">
+                <div class="font-display text-3xl sm:text-4xl font-extrabold text-[#0F766E] font-mono">99.9%</div>
+                <div class="text-xs font-mono text-slate-500 uppercase tracking-wider font-semibold">Platform Availability</div>
+              </div>
+
+              <div class="space-y-1 pt-2 md:pt-0">
+                <div class="font-display text-3xl sm:text-4xl font-extrabold text-[#0F766E] font-mono">20+</div>
+                <div class="text-xs font-mono text-slate-500 uppercase tracking-wider font-semibold">Enterprise Deployments</div>
+              </div>
+
+              <div class="space-y-1 pt-2 md:pt-0">
+                <div class="font-display text-3xl sm:text-4xl font-extrabold text-[#0F766E] font-mono">40%</div>
+                <div class="text-xs font-mono text-slate-500 uppercase tracking-wider font-semibold">Faster Production</div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- THREE INDEPENDENT HORIZONTAL TESTIMONIAL CONVEYOR TRACKS -->
+        <div class="space-y-6 relative z-10 w-full overflow-hidden py-4">
+          
+          <!-- TOP TRACK: Right to Left (←) -->
+          <div class="conveyor-track-container w-full overflow-hidden">
+            <div class="conveyor-track-left gap-6 px-4">
+              
+              <!-- CARD 1: Apex University -->
+              <div class="conveyor-card w-[420px] p-6 flex flex-col justify-between shrink-0 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 bg-[#0F766E]/10 text-[#0F766E] border border-[#0F766E]/20 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider">Higher Education</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[11px] font-mono text-slate-500 font-semibold">USA</span>
+                    <span class="px-2 py-0.5 bg-[#0F766E]/10 text-[#0F766E] text-[9px] font-mono rounded font-semibold">Verified</span>
+                  </div>
+                </div>
+                <blockquote class="text-slate-700 text-sm font-normal leading-relaxed">
+                  "Technofys transformed our digital learning ecosystem—enabling <span class="font-semibold text-[#0F766E]">50,000+ students</span> with 99.9% uptime across all Moodle clusters."
+                </blockquote>
+                <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="conveyor-avatar w-10 h-10 rounded-xl bg-[#0F766E] text-white font-mono font-bold flex items-center justify-center text-xs shadow-sm">RM</div>
+                    <div>
+                      <div class="font-display font-bold text-xs text-[#111827]">R. Menon</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Dean of Academics • Apex University</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-0.5 text-[#B7791F]">
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 2: Global Health Net -->
+              <div class="conveyor-card w-[450px] p-6 flex flex-col justify-between shrink-0 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 bg-[#0F766E]/10 text-[#0F766E] border border-[#0F766E]/20 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider">Healthcare</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[11px] font-mono text-slate-500 font-semibold">UK</span>
+                    <span class="px-2 py-0.5 bg-[#0F766E]/10 text-[#0F766E] text-[9px] font-mono rounded font-semibold">Verified</span>
+                  </div>
+                </div>
+                <blockquote class="text-slate-700 text-sm font-normal leading-relaxed">
+                  "Clinical procedure video evaluations reduced hospital certification backlogs by <span class="font-semibold text-[#0F766E]">40% across 12 regional sites</span>."
+                </blockquote>
+                <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="conveyor-avatar w-10 h-10 rounded-xl bg-[#0F766E] text-white font-mono font-bold flex items-center justify-center text-xs shadow-sm">SN</div>
+                    <div>
+                      <div class="font-display font-bold text-xs text-[#111827]">Dr. S. Nair</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Chief of Medical Ed • Global Health Net</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-0.5 text-[#B7791F]">
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 3: Starlight Academy -->
+              <div class="conveyor-card w-[380px] p-6 flex flex-col justify-between shrink-0 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 bg-[#B7791F]/10 text-[#B7791F] border border-[#B7791F]/20 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider">Corporate Learning</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[11px] font-mono text-slate-500 font-semibold">Singapore</span>
+                    <span class="px-2 py-0.5 bg-[#B7791F]/10 text-[#B7791F] text-[9px] font-mono rounded font-semibold">Verified</span>
+                  </div>
+                </div>
+                <blockquote class="text-slate-700 text-sm font-normal leading-relaxed">
+                  "AI audio voiceovers enabled our executive MBA modules to launch simultaneously across Europe, Asia, and Americas."
+                </blockquote>
+                <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="conveyor-avatar w-10 h-10 rounded-xl bg-[#B7791F] text-white font-mono font-bold flex items-center justify-center text-xs shadow-sm">EV</div>
+                    <div>
+                      <div class="font-display font-bold text-xs text-[#111827]">Prof. E. Vance</div>
+                      <div class="text-[10px] text-slate-500 font-mono">VP Digital Learning • Starlight Academy</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-0.5 text-[#B7791F]">
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 4: National Public Grid -->
+              <div class="conveyor-card w-[430px] p-6 flex flex-col justify-between shrink-0 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 bg-[#0F766E]/10 text-[#0F766E] border border-[#0F766E]/20 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider">Public Sector Grid</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[11px] font-mono text-slate-500 font-semibold">India</span>
+                    <span class="px-2 py-0.5 bg-[#0F766E]/10 text-[#0F766E] text-[9px] font-mono rounded font-semibold">Verified</span>
+                  </div>
+                </div>
+                <blockquote class="text-slate-700 text-sm font-normal leading-relaxed">
+                  "Offline-optimized Moodle cluster delivered continuous civil service training to <span class="font-semibold text-[#0F766E]">15,000 field officers</span> in remote provinces."
+                </blockquote>
+                <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="conveyor-avatar w-10 h-10 rounded-xl bg-[#0F766E] text-white font-mono font-bold flex items-center justify-center text-xs shadow-sm">AS</div>
+                    <div>
+                      <div class="font-display font-bold text-xs text-[#111827]">A. Sharma</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Director of Ops • National Public Grid</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-0.5 text-[#B7791F]">
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- DUPLICATE COPIES FOR SEAMLESS INFINITE LOOP -->
+              <div class="conveyor-card w-[420px] p-6 flex flex-col justify-between shrink-0 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 bg-emerald-50 text-[#0F766E] border border-emerald-200 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider">Higher Education</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-mono text-slate-400">🇺🇸 USA</span>
+                    <span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-700 text-[9px] font-mono rounded font-semibold">✓ Verified</span>
+                  </div>
+                </div>
+                <blockquote class="text-slate-700 text-sm font-normal leading-relaxed">
+                  "Technofys transformed our digital learning ecosystem—enabling <span class="font-semibold text-[#0F766E]">50,000+ students</span> with 99.9% uptime across all Moodle clusters."
+                </blockquote>
+                <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="conveyor-avatar w-10 h-10 rounded-xl bg-gradient-to-tr from-[#0F766E] to-teal-400 text-white font-mono font-bold flex items-center justify-center text-xs shadow-sm">RM</div>
+                    <div>
+                      <div class="font-display font-bold text-xs text-[#111827]">R. Menon</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Dean of Academics • Apex University</div>
+                    </div>
+                  </div>
+                  <div class="text-amber-500 text-xs">★★★★★</div>
+                </div>
+              </div>
+
+              <div class="conveyor-card w-[450px] p-6 flex flex-col justify-between shrink-0 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 bg-purple-50 text-purple-700 border border-purple-200 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider">Healthcare</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-mono text-slate-400">🇬🇧 UK</span>
+                    <span class="px-2 py-0.5 bg-purple-500/10 text-purple-700 text-[9px] font-mono rounded font-semibold">✓ Verified</span>
+                  </div>
+                </div>
+                <blockquote class="text-slate-700 text-sm font-normal leading-relaxed">
+                  "Clinical procedure video evaluations reduced hospital certification backlogs by <span class="font-semibold text-purple-700">40% across 12 regional sites</span>."
+                </blockquote>
+                <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="conveyor-avatar w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-700 to-indigo-500 text-white font-mono font-bold flex items-center justify-center text-xs shadow-sm">SN</div>
+                    <div>
+                      <div class="font-display font-bold text-xs text-[#111827]">Dr. S. Nair</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Chief of Medical Ed • Global Health Net</div>
+                    </div>
+                  </div>
+                  <div class="text-amber-500 text-xs">★★★★★</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- MIDDLE TRACK: Left to Right (→) -->
+          <div class="conveyor-track-container w-full overflow-hidden">
+            <div class="conveyor-track-right gap-6 px-4">
+              
+              <!-- CARD 5: Horizon Humanitarian -->
+              <div class="conveyor-card w-[460px] p-6 flex flex-col justify-between shrink-0 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 bg-[#0F766E]/10 text-[#0F766E] border border-[#0F766E]/20 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider">Humanitarian NGO</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[11px] font-mono text-slate-500 font-semibold">Switzerland</span>
+                    <span class="px-2 py-0.5 bg-[#0F766E]/10 text-[#0F766E] text-[9px] font-mono rounded font-semibold">Verified</span>
+                  </div>
+                </div>
+                <blockquote class="text-slate-700 text-sm font-normal leading-relaxed">
+                  "Delivered offline mobile learning platforms for field volunteers in low-connectivity regions with 100% audio course sync."
+                </blockquote>
+                <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="conveyor-avatar w-10 h-10 rounded-xl bg-[#0F766E] text-white font-mono font-bold flex items-center justify-center text-xs shadow-sm">DC</div>
+                    <div>
+                      <div class="font-display font-bold text-xs text-[#111827]">D. Chen</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Global Program Director • Horizon Mission</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-0.5 text-[#B7791F]">
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 6: Global CEU Alliance -->
+              <div class="conveyor-card w-[370px] p-6 flex flex-col justify-between shrink-0 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 bg-[#B7791F]/10 text-[#B7791F] border border-[#B7791F]/20 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider">CEU Certification</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[11px] font-mono text-slate-500 font-semibold">Australia</span>
+                    <span class="px-2 py-0.5 bg-[#B7791F]/10 text-[#B7791F] text-[9px] font-mono rounded font-semibold">Verified</span>
+                  </div>
+                </div>
+                <blockquote class="text-slate-700 text-sm font-normal leading-relaxed">
+                  "Automated badge issuing and global payment gateway integration scaled our professional academy revenues by 3x."
+                </blockquote>
+                <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="conveyor-avatar w-10 h-10 rounded-xl bg-[#B7791F] text-white font-mono font-bold flex items-center justify-center text-xs shadow-sm">KJ</div>
+                    <div>
+                      <div class="font-display font-bold text-xs text-[#111827]">K. Jackson</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Head of CEU • Global CEU Alliance</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-0.5 text-[#B7791F]">
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 7: Oxford Campus Systems -->
+              <div class="conveyor-card w-[410px] p-6 flex flex-col justify-between shrink-0 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 bg-[#0F766E]/10 text-[#0F766E] border border-[#0F766E]/20 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider">University Campus</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[11px] font-mono text-slate-500 font-semibold">UK</span>
+                    <span class="px-2 py-0.5 bg-[#0F766E]/10 text-[#0F766E] text-[9px] font-mono rounded font-semibold">Verified</span>
+                  </div>
+                </div>
+                <blockquote class="text-slate-700 text-sm font-normal leading-relaxed">
+                  "The Moodle 4.x custom theme and SAML SSO integration provided our 30,000 postgrads with a seamless mobile-first portal."
+                </blockquote>
+                <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="conveyor-avatar w-10 h-10 rounded-xl bg-[#0F766E] text-white font-mono font-bold flex items-center justify-center text-xs shadow-sm">ML</div>
+                    <div>
+                      <div class="font-display font-bold text-xs text-[#111827]">M. Laurent</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Chief Information Officer • Oxford Tech</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-0.5 text-[#B7791F]">
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 8: Zenith Enterprise -->
+              <div class="conveyor-card w-[430px] p-6 flex flex-col justify-between shrink-0 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 bg-[#B7791F]/10 text-[#B7791F] border border-[#B7791F]/20 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider">Corporate Hub</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[11px] font-mono text-slate-500 font-semibold">Canada</span>
+                    <span class="px-2 py-0.5 bg-[#B7791F]/10 text-[#B7791F] text-[9px] font-mono rounded font-semibold">Verified</span>
+                  </div>
+                </div>
+                <blockquote class="text-slate-700 text-sm font-normal leading-relaxed">
+                  "Employee compliance completion rates jumped from 64% to 96% within 60 days of deploying Technofys' gamified H5P modules."
+                </blockquote>
+                <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="conveyor-avatar w-10 h-10 rounded-xl bg-[#B7791F] text-white font-mono font-bold flex items-center justify-center text-xs shadow-sm">PA</div>
+                    <div>
+                      <div class="font-display font-bold text-xs text-[#111827]">P. Aris</div>
+                      <div class="text-[10px] text-slate-500 font-mono">VP HR & L&D • Zenith Enterprise</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-0.5 text-[#B7791F]">
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-[#B7791F]"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- DUPLICATE COPIES FOR SEAMLESS INFINITE LOOP -->
+              <div class="conveyor-card w-[460px] p-6 flex flex-col justify-between shrink-0 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 bg-teal-50 text-teal-700 border border-teal-200 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider">Humanitarian NGO</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-mono text-slate-400">🇨🇭 Switzerland</span>
+                    <span class="px-2 py-0.5 bg-teal-500/10 text-teal-700 text-[9px] font-mono rounded font-semibold">✓ Verified</span>
+                  </div>
+                </div>
+                <blockquote class="text-slate-700 text-sm font-normal leading-relaxed">
+                  "Delivered offline mobile learning platforms for field volunteers in low-connectivity regions with 100% audio course sync."
+                </blockquote>
+                <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="conveyor-avatar w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 to-emerald-400 text-white font-mono font-bold flex items-center justify-center text-xs shadow-sm">DC</div>
+                    <div>
+                      <div class="font-display font-bold text-xs text-[#111827]">D. Chen</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Global Program Director • Horizon Mission</div>
+                    </div>
+                  </div>
+                  <div class="text-amber-500 text-xs">★★★★★</div>
+                </div>
+              </div>
+
+              <div class="conveyor-card w-[370px] p-6 flex flex-col justify-between shrink-0 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 bg-orange-50 text-orange-700 border border-orange-200 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider">CEU Certification</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-mono text-slate-400">🇦🇺 Australia</span>
+                    <span class="px-2 py-0.5 bg-orange-500/10 text-orange-700 text-[9px] font-mono rounded font-semibold">✓ Verified</span>
+                  </div>
+                </div>
+                <blockquote class="text-slate-700 text-sm font-normal leading-relaxed">
+                  "Automated badge issuing and global payment gateway integration scaled our professional academy revenues by 3x."
+                </blockquote>
+                <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="conveyor-avatar w-10 h-10 rounded-xl bg-gradient-to-tr from-orange-600 to-amber-500 text-white font-mono font-bold flex items-center justify-center text-xs shadow-sm">KJ</div>
+                    <div>
+                      <div class="font-display font-bold text-xs text-[#111827]">K. Jackson</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Head of CEU • Global CEU Alliance</div>
+                    </div>
+                  </div>
+                  <div class="text-amber-500 text-xs">★★★★★</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ================= SCENE 8: TECHNOLOGY (SPATIAL 3D MUSEUM INSTALLATION) ================= -->
+      <section id="tech-wall" class="relative pt-24 pb-12 sm:pt-28 sm:pb-16 px-6 bg-[#F8F7F4] overflow-hidden z-20">
+        <div class="max-w-7xl mx-auto">
+          
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-[#0F766E] font-semibold">Spatial Technology Installation</span>
+              <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-[#111827] mt-2">
+                Floating Technology Museum
+              </h2>
+            </div>
+            <p class="text-slate-600 text-sm sm:text-base max-w-md">
+              Move cursor to adjust spatial perspective over floating technology modules.
+            </p>
+          </div>
+
+          <!-- 3D Technology Glass Grid -->
+          <div id="tech-grid" class="perspective-container grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6">
+            
+            <div class="tech-tile-3d glass-card-3d rounded-2xl p-6 text-center bg-white">
+              <div class="font-display font-bold text-[#111827] text-base mb-1">Moodle 4.x</div>
+              <div class="text-[10px] text-slate-500 font-mono">LMS Core</div>
+            </div>
+
+            <div class="tech-tile-3d glass-card-3d rounded-2xl p-6 text-center bg-white">
+              <div class="font-display font-bold text-[#111827] text-base mb-1">SCORM 1.2/2004</div>
+              <div class="text-[10px] text-slate-500 font-mono">E-Learning Std</div>
+            </div>
+
+            <div class="tech-tile-3d glass-card-3d rounded-2xl p-6 text-center bg-white">
+              <div class="font-display font-bold text-[#111827] text-base mb-1">xAPI / LTI</div>
+              <div class="text-[10px] text-slate-500 font-mono">Telemetry</div>
+            </div>
+
+            <div class="tech-tile-3d glass-card-3d rounded-2xl p-6 text-center bg-white">
+              <div class="font-display font-bold text-[#111827] text-base mb-1">H5P Engine</div>
+              <div class="text-[10px] text-slate-500 font-mono">Interactive</div>
+            </div>
+
+            <div class="tech-tile-3d glass-card-3d rounded-2xl p-6 text-center bg-white">
+              <div class="font-display font-bold text-[#111827] text-base mb-1">AI Audio Synth</div>
+              <div class="text-[10px] text-slate-500 font-mono">Voiceover</div>
+            </div>
+
+            <div class="tech-tile-3d glass-card-3d rounded-2xl p-6 text-center bg-white">
+              <div class="font-display font-bold text-[#111827] text-base mb-1">Python / Fast</div>
+              <div class="text-[10px] text-slate-500 font-mono">Backend</div>
+            </div>
+
+            <div class="tech-tile-3d glass-card-3d rounded-2xl p-6 text-center bg-white">
+              <div class="font-display font-bold text-[#111827] text-base mb-1">Docker / K8s</div>
+              <div class="text-[10px] text-slate-500 font-mono">Deployment</div>
+            </div>
+
+            <div class="tech-tile-3d glass-card-3d rounded-2xl p-6 text-center bg-white">
+              <div class="font-display font-bold text-[#111827] text-base mb-1">AWS Cloud</div>
+              <div class="text-[10px] text-slate-500 font-mono">Infrastructure</div>
+            </div>
+
+            <div class="tech-tile-3d glass-card-3d rounded-2xl p-6 text-center bg-white">
+              <div class="font-display font-bold text-[#111827] text-base mb-1">PostgreSQL</div>
+              <div class="text-[10px] text-slate-500 font-mono">Database</div>
+            </div>
+
+            <div class="tech-tile-3d glass-card-3d rounded-2xl p-6 text-center bg-white">
+              <div class="font-display font-bold text-[#111827] text-base mb-1">Redis Cache</div>
+              <div class="text-[10px] text-slate-500 font-mono">High Concurrency</div>
+            </div>
+
+            <div class="tech-tile-3d glass-card-3d rounded-2xl p-6 text-center bg-white">
+              <div class="font-display font-bold text-[#111827] text-base mb-1">FFmpeg Video</div>
+              <div class="text-[10px] text-slate-500 font-mono">Transcoding</div>
+            </div>
+
+            <div class="tech-tile-3d glass-card-3d rounded-2xl p-6 text-center bg-white">
+              <div class="font-display font-bold text-[#111827] text-base mb-1">REST API</div>
+              <div class="text-[10px] text-slate-500 font-mono">Integrations</div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= SCENE 9 & 10: INTEGRATED CLOSING EXPERIENCE (DEEP CHARCOAL #111827) ================= -->
+      <section id="closing-experience" class="relative bg-[#111827] text-slate-100 pt-24 pb-16 sm:pt-28 sm:pb-20 px-6 sm:px-12 overflow-hidden z-20">
+        
+        <!-- Ambient Glow Layer -->
+        <div class="absolute inset-0 bg-closing-ambient pointer-events-none z-0"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+          
+          <!-- Editorial Headline + Call to Action Block -->
+          <div class="max-w-5xl mb-24">
+            
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-mono uppercase tracking-widest mb-8">
+              Start A Conversation
+            </div>
+
+            <!-- Master Editorial Statement -->
+            <h2 id="closing-headline" class="font-display text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-white leading-[1.05] mb-12">
+              Let's Build Learning That Matters.
+            </h2>
+
+            <!-- Supporting Paragraph -->
+            <p class="text-slate-300 text-base sm:text-xl font-normal leading-relaxed max-w-[620px] mb-14">
+              From enterprise LMS implementations to AI-powered learning experiences, we help organisations build scalable digital education ecosystems.
+            </p>
+
+            <!-- Single Primary Action: Deep Emerald Pill Button -->
+            <div class="mb-16">
+              <a href="mailto:admin@technofys.com" class="emerald-primary-btn group inline-flex items-center justify-center gap-4 px-9 py-4.5 rounded-full font-semibold text-base transition-all shadow-xl">
+                <span>Request a Consultation</span>
+                <i data-lucide="arrow-right" class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"></i>
+              </a>
+            </div>
+
+            <!-- Large Interactive Email Action (Secondary Action) -->
+            <div class="pt-4">
+              <div class="text-xs font-mono uppercase tracking-widest text-slate-400 mb-3">Direct Inquiries</div>
+              <a href="mailto:admin@technofys.com" class="large-email-link font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-white hover:text-teal-400 transition-colors">
+                admin@technofys.com
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Thin Divider -->
+          <div class="w-full h-[1px] bg-white/10 my-20"></div>
+
+          <!-- 4-Column Footer Navigation Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-sm">
+            
+            <!-- Column 1: Brand & Mission -->
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-[#0F766E] flex items-center justify-center font-bold text-white text-lg shadow-sm">T</div>
+                <span class="font-display font-bold text-xl text-white tracking-tight">Technofys</span>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed max-w-xs pt-1">
+                Enterprise Digital Learning Solutions • AI Learning Experiences • Moodle LMS • Instructional Design
+              </p>
+            </div>
+
+            <!-- Column 2: Navigation -->
+            <div class="space-y-3">
+              <h4 class="font-mono text-xs font-bold text-slate-300 uppercase tracking-widest mb-4">Navigation</h4>
+              <ul class="space-y-2.5 text-xs text-slate-400">
+                <li><a href="#about" class="hover:text-white transition-colors">Campus Discovery</a></li>
+                <li><a href="#services" class="hover:text-white transition-colors">Spatial Ecosystem</a></li>
+                <li><a href="#industries" class="hover:text-white transition-colors">Architectural Showcase</a></li>
+                <li><a href="#transformation" class="hover:text-white transition-colors">Interface Morph</a></li>
+                <li><a href="#pipeline" class="hover:text-white transition-colors">Pipeline Factory</a></li>
+                <li><a href="#portfolio" class="hover:text-white transition-colors">Exhibition Gallery</a></li>
+              </ul>
+            </div>
+
+            <!-- Column 3: Solutions -->
+            <div class="space-y-3">
+              <h4 class="font-mono text-xs font-bold text-slate-300 uppercase tracking-widest mb-4">Solutions</h4>
+              <ul class="space-y-2.5 text-xs text-slate-400">
+                <li><a href="mailto:admin@technofys.com" class="hover:text-white transition-colors">Moodle LMS Deployment</a></li>
+                <li><a href="mailto:admin@technofys.com" class="hover:text-white transition-colors">AI Learning & Audio</a></li>
+                <li><a href="mailto:admin@technofys.com" class="hover:text-white transition-colors">SCORM & Course Production</a></li>
+                <li><a href="mailto:admin@technofys.com" class="hover:text-white transition-colors">H5P Interactive Widgets</a></li>
+                <li><a href="mailto:admin@technofys.com" class="hover:text-white transition-colors">Managed Cloud Hosting</a></li>
+              </ul>
+            </div>
+
+            <!-- Column 4: Contact & Office -->
+            <div class="space-y-3">
+              <h4 class="font-mono text-xs font-bold text-slate-300 uppercase tracking-widest mb-4">Contact</h4>
+              <div class="text-xs text-slate-400 space-y-2 leading-relaxed">
+                <p class="font-medium text-slate-200">Technopark Office</p>
+                <p>SBC Module No.30, Basement Floor 2,</p>
+                <p>Thejaswini, Technopark, Trivandrum, Kerala, India – 695 581</p>
+                <p class="pt-2"><a href="tel:+61448203667" class="hover:text-white transition-colors">+61 448 203 667</a></p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Micro Copyright Strip -->
+          <div class="pt-16 mt-16 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+            <p>© 2020-2030 Technofys EdTech. All rights reserved.</p>
+            <div class="flex gap-6">
+              <a href="#" class="hover:text-slate-400 transition-colors">Privacy Policy</a>
+              <a href="#" class="hover:text-slate-400 transition-colors">Terms of Service</a>
+              <a href="#" class="hover:text-slate-400 transition-colors">Security Compliance</a>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
