@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node setup_public.js && vite",
+    "build": "node setup_public.js && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
